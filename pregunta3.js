@@ -3,12 +3,22 @@
 // si la longitud del array es < 3 se debe retornar undefined
 
 const greater3 = nums => {
-    
-}
-
-
-// TESTs no modificar
-console.log(greater3([4,3,4,5,1]) === 3);
-console.log(greater3([3,4]) === undefined);
-console.log(greater3([4,4,4]) === undefined);
-console.log(greater3([1,1,2,5]) === 1);
+    let cont = 0;
+    const numberSorted = nums.sort((a,b) => b - a);
+    let aux = numberSorted[0];
+    numberSorted.map((number) => {
+        if(number < aux && cont < 2){
+            aux = number;
+            cont++;
+        }
+    })
+    if(cont === 2) return aux;
+    return undefined;  
+ }
+ 
+ 
+ // TESTs no modificar
+ console.log(greater3([4,3,4,5,1]) === 3);
+ console.log(greater3([3,4]) === undefined);
+ console.log(greater3([4,4,4]) === undefined);
+ console.log(greater3([1,1,2,5]) === 1);
